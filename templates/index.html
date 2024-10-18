@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="shortcut icon" href="../static/favicon.ico" type="image/x-icon">
+    <title>Fake News Detection</title>
+</head>
+<body>
+    <div class="container">
+        <h3 class="title">Fake News Detection</h3>
+        <div class="form_input">
+            <form action="{{url_for('predict')}}" method="post">
+                <input type="text" name="url_post" id="url_post" placeholder="URL Post" required>
+                <button type="submit" class="btn_submit">Check</button>
+            </form>
+        </div>
+        
+        <div class="view_post">
+            <div class="post">
+                <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v17.0"></script>
+                <div 
+                    class="fb-post" 
+                    data-href={{url_post}} 
+                    data-width="600"
+                ></div>
+            </div>
+            <div class="predict">
+                <div class="predict_result {{detection}}">
+                    {{detection}}
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
